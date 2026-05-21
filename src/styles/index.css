@@ -1,0 +1,6 @@
+/* Punto de entrada de estilos */
+@import 'tailwindcss' source(none);
+@source '../../**/*.{js,jsx}';
+@import 'tw-animate-css';
+@import './theme.css';
+@import './globals.css';
