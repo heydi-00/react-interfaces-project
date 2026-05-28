@@ -1,20 +1,43 @@
-# STIMI — Sistema de Trazabilidad de Informes Mensuales de Instructores
+# ⚛️ React Interfaces Project
 
-## Instalación
+Proyecto desarrollado en React enfocado en la creación de interfaces modernas e interactivas para aplicaciones web.
 
-```bash
-npm install
-npm run dev
-```
+---
 
-## Credenciales demo
+# 📌 Descripción
 
-| Usuario | Contraseña | Rol |
-|---|---|---|
-| instructor | 123 | Instructor |
-| coordinador | 123 | Coordinador |
+Este proyecto fue desarrollado como práctica de diseño y construcción de interfaces utilizando React. Se enfoca en la organización de componentes, estructura visual y experiencia de usuario.
 
-## Estructura del proyecto
+---
+
+# 🚀 Funcionalidades
+
+✅ Componentes reutilizables
+✅ Navegación entre vistas
+✅ Diseño responsive
+✅ Interfaz dinámica
+✅ Organización modular del proyecto
+
+---
+
+# 🛠️ Tecnologías utilizadas
+
+* React
+* JavaScript
+* HTML5
+* CSS3
+
+---
+
+# 📷 Capturas del proyecto
+
+## Vista principal
+
+<img width="700" alt="Vista principal" src="AQUI_TU_IMAGEN" />
+
+---
+
+# 📂 Estructura del proyecto
 
 ```
 src/
@@ -31,3 +54,48 @@ src/
   App.jsx
   main.jsx
 ```
+---
+
+#🔐 Credenciales demo
+
+| Usuario | Contraseña | Rol |
+|---|---|---|
+| instructor | 123 | Instructor |
+| coordinador | 123 | Coordinador |
+
+---
+
+# ⚙️ Instalación
+
+## 1. Clonar repositorio
+
+```bash id="k8rj2f"
+git clone https://github.com/heydi-00/react-interfaces-project.git
+```
+
+## 2. Instalar dependencias
+
+```bash id="r3xv1m"
+npm install
+```
+
+## 3. Ejecutar proyecto
+
+```bash id="y7qz9n"
+npm start
+```
+
+---
+
+# 📚 Aprendizajes
+
+* Creación de componentes reutilizables
+* Organización de proyectos React
+* Manejo de estilos e interfaces
+* Desarrollo frontend moderno
+
+---
+
+# 👩‍💻 Autor
+
+Heidy Hoyos
