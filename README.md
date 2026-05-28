@@ -33,7 +33,7 @@ Este proyecto fue desarrollado como práctica de diseño y construcción de inte
 
 ## Vista principal
 
-<img width="700" alt="Vista principal" src="AQUI_TU_IMAGEN" />
+<img width="1910" height="900" alt="Captura de pantalla 2026-05-28 133320" src="https://github.com/user-attachments/assets/1a09d322-1a2a-4510-b884-a69a292a362d" />
 
 ---
 
