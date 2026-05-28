@@ -34,6 +34,9 @@ Este proyecto fue desarrollado como práctica de diseño y construcción de inte
 ## Vista principal
 
 <img width="1910" height="900" alt="Captura de pantalla 2026-05-28 133320" src="https://github.com/user-attachments/assets/1a09d322-1a2a-4510-b884-a69a292a362d" />
+<img width="1915" height="902" alt="Captura de pantalla 2026-05-28 133606" src="https://github.com/user-attachments/assets/ff801f78-7940-4e0b-9c0c-665a6af0417c" />
+<img width="1915" height="903" alt="Captura de pantalla 2026-05-28 133648" src="https://github.com/user-attachments/assets/c5e22711-aa80-48fb-ac3f-12993ad06bd1" />
+<img width="1913" height="906" alt="Captura de pantalla 2026-05-28 133719" src="https://github.com/user-attachments/assets/8e8e3bfd-4c26-4808-ac62-9cbcb0d5de29" />
 
 ---
 
