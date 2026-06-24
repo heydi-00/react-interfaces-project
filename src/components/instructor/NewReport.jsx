@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { Card } from '../ui/card';
-import { Button } from '../ui/button';
-import { Label } from '../ui/label';
+import { useState } from "react";
+import { Button } from "../ui/button";
+import { Label } from "../ui/label";
 import {
   ArrowLeft,
   DollarSign,
@@ -11,262 +10,201 @@ import {
   Save,
   ClipboardList,
   AlertCircle,
-} from 'lucide-react';
-import { toast } from 'sonner';
-import ReportGF from './ReportGF';
-
-// Sub-view: fill and submit a single planilla
+  ScrollText
+} from "lucide-react";
+import { toast } from "sonner";
+import ReportGF from "./ReportGF";
+import ReportGC from "./ReportGC";
 function PlanillaReport({ planilla, onBack }) {
   const [uploadedFile, setUploadedFile] = useState(null);
-  const [month, setMonth] = useState('');
-  const [year, setYear] = useState(new Date().getFullYear().toString());
-
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState((/* @__PURE__ */ new Date()).getFullYear().toString());
   const handleSubmit = () => {
     if (!month || !year) {
-      toast.error('Por favor completa el mes y año del informe');
+      toast.error("Por favor completa el mes y año del informe");
       return;
     }
     if (!uploadedFile) {
-      toast.error('Por favor adjunta la planilla diligenciada');
+      toast.error("Por favor adjunta la planilla diligenciada");
       return;
     }
-    toast.success('Planilla enviada exitosamente');
+    toast.success("Planilla enviada exitosamente");
     onBack();
   };
-
-  return (
-    <div className="p-8">
-      <Button variant="ghost" onClick={onBack} className="mb-6">
-        <ArrowLeft size={18} className="mr-2" />
-        Volver
+  return <div className="p-8">
+      <Button variant="ghost" onClick={onBack} className="mb-6 -ml-2">
+        <ArrowLeft size={18} className="mr-2" />Volver
       </Button>
-
       <div className="mb-8">
         <h1 className="mb-2">{planilla.name}</h1>
-        {planilla.description && (
-          <p className="text-gray-600">{planilla.description}</p>
-        )}
+        {planilla.description && <p className="text-gray-600">{planilla.description}</p>}
       </div>
-
-      {planilla.fileName && (
-        <Card className="p-4 mb-6 border-l-4 border-l-[#39A900] bg-green-50">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <FileText className="text-[#39A900]" size={20} />
-              <div>
-                <p className="text-sm font-medium text-gray-800">Plantilla disponible</p>
-                <p className="text-xs text-gray-500">{planilla.fileName}</p>
-              </div>
+      {planilla.fileName && <div className="p-4 mb-6 rounded-xl border-l-4 border-l-[#39A900] bg-green-50 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <FileText className="text-[#39A900]" size={20} />
+            <div>
+              <p className="text-sm font-medium text-gray-800">Plantilla disponible</p>
+              <p className="text-xs text-gray-500">{planilla.fileName}</p>
             </div>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => toast.info(`Descargando ${planilla.fileName}...`)}
-              className="border-[#39A900] text-[#39A900] hover:bg-green-100 gap-2"
-            >
-              <Download size={15} />
-              Descargar
-            </Button>
           </div>
-        </Card>
-      )}
-
-      <Card className="p-4 mb-6 border-l-4 border-l-blue-500 bg-blue-50">
+          <Button variant="outline" size="sm" onClick={() => toast.info("Descargando...")} className="border-[#39A900] text-[#39A900] hover:bg-green-100 gap-2">
+            <Download size={15} />Descargar
+          </Button>
+        </div>}
+      <div className="p-4 mb-6 rounded-xl border-l-4 border-l-blue-500 bg-blue-50">
         <div className="flex items-start gap-3">
-          <AlertCircle className="text-blue-600 flex-shrink-0 mt-0.5" size={20} />
-          <div className="text-sm text-blue-800">
-            <p className="mb-1 font-medium">Instrucciones</p>
-            <ul className="list-disc list-inside space-y-1">
-              <li>Descarga la plantilla, diligénciala completamente y súbela de vuelta</li>
-              <li>El archivo debe estar en formato PDF, DOC o DOCX</li>
-              <li>Verifica que todos los campos estén completos antes de enviar</li>
-            </ul>
-          </div>
+          <AlertCircle className="text-blue-600 flex-shrink-0 mt-0.5" size={18} />
+          <ul className="text-sm text-blue-800 list-disc list-inside space-y-1">
+            <li>Descarga la plantilla, diligénciala completamente y súbela de vuelta</li>
+            <li>El archivo debe estar en formato PDF, DOC o DOCX</li>
+            <li>Verifica que todos los campos estén completos antes de enviar</li>
+          </ul>
         </div>
-      </Card>
-
-      <Card className="p-6 mb-6">
+      </div>
+      <div className="p-6 mb-6 bg-white rounded-xl border border-gray-200 shadow-sm">
         <h2 className="mb-4">Información General</h2>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <Label htmlFor="month">Mes del informe</Label>
-            <select
-              id="month"
-              value={month}
-              onChange={e => setMonth(e.target.value)}
-              className="w-full mt-2 p-2 border border-gray-300 rounded-lg"
-            >
+            <Label>Mes del informe</Label>
+            <select value={month} onChange={(e) => setMonth(e.target.value)} className="w-full mt-2 p-2 border border-gray-300 rounded-lg">
               <option value="">Selecciona un mes</option>
-              {['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'].map((m, i) => (
-                <option key={m} value={String(i + 1).padStart(2, '0')}>{m}</option>
-              ))}
+              {["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"].map((m, i) => <option key={m} value={String(i + 1).padStart(2, "0")}>{m}</option>)}
             </select>
           </div>
           <div>
-            <Label htmlFor="year">Año</Label>
-            <input
-              id="year"
-              type="text"
-              value={year}
-              onChange={e => setYear(e.target.value)}
-              placeholder={new Date().getFullYear().toString()}
-              className="w-full mt-2 p-2 border border-gray-300 rounded-lg"
-            />
+            <Label>Año</Label>
+            <input type="text" value={year} onChange={(e) => setYear(e.target.value)} className="w-full mt-2 p-2 border border-gray-300 rounded-lg" />
           </div>
         </div>
-      </Card>
-
-      <Card className="p-6 mb-6">
+      </div>
+      <div className="p-6 mb-6 bg-white rounded-xl border border-gray-200 shadow-sm">
         <h2 className="mb-4">Planilla Diligenciada</h2>
-        <label
-          htmlFor="planilla-upload"
-          className="flex items-center justify-center w-full p-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#39A900] hover:bg-green-50 transition-colors"
-        >
+        <label htmlFor="planilla-upload" className="flex items-center justify-center w-full p-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#39A900] hover:bg-green-50 transition-colors">
           <div className="text-center">
             <Upload className="mx-auto mb-3 text-gray-400" size={36} />
-            <p className="text-sm text-gray-600">
-              {uploadedFile ? uploadedFile.name : 'Haz clic para subir la planilla diligenciada'}
-            </p>
+            <p className="text-sm text-gray-600">{uploadedFile ? uploadedFile.name : "Haz clic para subir la planilla diligenciada"}</p>
             <p className="text-xs text-gray-400 mt-1">PDF, DOC, DOCX (máx. 10MB)</p>
           </div>
-          <input
-            id="planilla-upload"
-            type="file"
-            className="hidden"
-            accept=".pdf,.doc,.docx"
-            onChange={e => {
-              const f = e.target.files?.[0];
-              if (f) {
-                setUploadedFile(f);
-                toast.success(`Archivo cargado: ${f.name}`);
-              }
-            }}
-          />
+          <input id="planilla-upload" type="file" className="hidden" accept=".pdf,.doc,.docx" onChange={(e) => {
+    const f = e.target.files?.[0];
+    if (f) {
+      setUploadedFile(f);
+      toast.success("Archivo cargado: " + f.name);
+    }
+  }} />
         </label>
-        {uploadedFile && (
-          <div className="mt-3 flex items-center gap-2 text-sm text-[#39A900]">
-            <FileText size={16} />
-            <span>{uploadedFile.name} — listo para enviar</span>
-          </div>
-        )}
-      </Card>
-
+      </div>
       <div className="flex gap-4">
-        <Button
-          variant="outline"
-          onClick={() => toast.success('Borrador guardado correctamente')}
-          className="border-[#39A900] text-[#39A900] hover:bg-green-50"
-        >
-          <Save size={18} className="mr-2" />
-          Guardar Borrador
+        <Button variant="outline" onClick={() => toast.success("Borrador guardado")} className="border-[#39A900] text-[#39A900] hover:bg-green-50">
+          <Save size={16} className="mr-2" />Guardar Borrador
         </Button>
         <Button onClick={handleSubmit} className="bg-[#39A900] hover:bg-[#2d8400]">
-          <FileText size={18} className="mr-2" />
-          Enviar Planilla
+          <FileText size={16} className="mr-2" />Enviar Planilla
         </Button>
       </div>
-    </div>
-  );
+    </div>;
 }
-
 export default function NewReport({ planillas }) {
   const [selectedType, setSelectedType] = useState(null);
   const [selectedPlanilla, setSelectedPlanilla] = useState(null);
-
-  if (selectedType === 'planilla' && selectedPlanilla) {
-    return (
-      <PlanillaReport
-        planilla={selectedPlanilla}
-        onBack={() => { setSelectedType(null); setSelectedPlanilla(null); }}
-      />
-    );
+  if (selectedType === "gc") return <ReportGC onBack={() => setSelectedType(null)} />;
+  if (selectedType === "gf") return <ReportGF onBack={() => setSelectedType(null)} />;
+  if (selectedType === "planilla" && selectedPlanilla) {
+    return <PlanillaReport planilla={selectedPlanilla} onBack={() => {
+      setSelectedType(null);
+      setSelectedPlanilla(null);
+    }} />;
   }
+  return <div className="p-8">
+      <h1 className="mb-2 text-gray-800">Selecciona el tipo de informe que deseas crear</h1>
 
-  if (selectedType === 'gf') {
-    return <ReportGF onBack={() => setSelectedType(null)} />;
-  }
-
-  return (
-    <div className="p-8">
-      <div className="mb-8">
-        <h1 className="mb-2">Nuevo Informe</h1>
-        <p className="text-gray-600">Selecciona el tipo de informe que deseas crear</p>
+      <div className="p-4 mb-8 rounded-xl border border-blue-200 bg-blue-50">
+        <div className="flex items-start gap-3">
+          <AlertCircle className="text-blue-600 flex-shrink-0 mt-0.5" size={18} />
+          <ul className="text-sm text-blue-800 list-disc list-inside space-y-1">
+            <li>Los informes deben ser entregados entre el día 1 y 28 de cada mes</li>
+            <li>Asegúrate de completar todos los campos obligatorios</li>
+            <li>Adjunta todas las evidencias requeridas</li>
+            <li>Puedes guardar tu progreso y continuar después</li>
+          </ul>
+        </div>
       </div>
 
-      <Card className="p-4 mb-8 border-l-4 border-l-blue-500 bg-blue-50">
-        <h3 className="text-blue-900 mb-2">Instrucciones</h3>
-        <ul className="text-sm text-blue-800 space-y-1 list-disc list-inside">
-          <li>Los informes deben ser entregados entre el día 1 y 28 de cada mes</li>
-          <li>Asegúrate de completar todos los campos obligatorios</li>
-          <li>Adjunta todas las evidencias requeridas</li>
-          <li>Puedes guardar tu progreso y continuar después</li>
-        </ul>
-      </Card>
-
-      <div className="space-y-10">
-        {/* GC Planillas */}
-        <div>
-          <h2 className="mb-4 text-gray-700">Gestión Contractual (GC)</h2>
-
-          {planillas.length === 0 ? (
-            <Card className="p-10 text-center border-dashed border-2 max-w-lg">
-              <ClipboardList className="mx-auto mb-3 text-gray-300" size={40} />
-              <p className="text-gray-500 font-medium mb-1">Sin planillas disponibles</p>
-              <p className="text-sm text-gray-400">
-                El coordinador aún no ha publicado planillas GC para diligenciar
-              </p>
-            </Card>
-          ) : (
-            <div className="grid md:grid-cols-2 gap-4 max-w-3xl">
-              {planillas.map(p => (
-                <Card
-                  key={p.id}
-                  className="p-6 hover:shadow-lg transition-all cursor-pointer border-2 hover:border-[#39A900]"
-                  onClick={() => { setSelectedPlanilla(p); setSelectedType('planilla'); }}
-                >
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-4">
-                      <ClipboardList className="text-[#39A900]" size={28} />
-                    </div>
-                    <h3 className="mb-2 text-[#39A900] font-semibold leading-snug">{p.name}</h3>
-                    {p.description && (
-                      <p className="text-sm text-gray-500 mb-3 line-clamp-2">{p.description}</p>
-                    )}
-                    <p className="text-xs text-gray-400 mb-4">Publicada: {p.createdAt}</p>
-                    <Button className="w-full bg-[#39A900] hover:bg-[#2d8400]">
-                      Diligenciar Planilla
-                    </Button>
-                  </div>
-                </Card>
-              ))}
+      <div className="grid md:grid-cols-2 gap-6 mb-10">
+        {
+    /* GC */
+  }
+        <div className="bg-white border-2 border-gray-200 hover:border-[#39A900] hover:shadow-lg transition-all rounded-2xl p-8 flex flex-col">
+          <div className="flex justify-center mb-5">
+            <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center">
+              <ScrollText className="text-gray-500" size={32} />
             </div>
-          )}
+          </div>
+          <h2 className="text-center text-[#39A900] font-bold text-lg mb-1">Gestión Contractual (GC)</h2>
+          <p className="text-center text-sm text-gray-500 mb-5">
+            Informe de gestión contractual con evidencias de las 17 obligaciones establecidas
+          </p>
+          <div className="mb-6">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Documentos requeridos</p>
+            <ul className="text-sm text-gray-600 space-y-1">
+              <li className="flex items-start gap-1.5"><span className="text-[#39A900] mt-0.5">•</span>Guía de trabajo</li>
+              <li className="flex items-start gap-1.5"><span className="text-[#39A900] mt-0.5">•</span>Evidencias de cada obligación</li>
+              <li className="flex items-start gap-1.5"><span className="text-[#39A900] mt-0.5">•</span>Descripción de actividades realizadas</li>
+              <li className="flex items-start gap-1.5"><span className="text-[#39A900] mt-0.5">•</span>Justificación de actividades no realizadas</li>
+            </ul>
+          </div>
+          <Button onClick={() => setSelectedType("gc")} className="mt-auto w-full bg-[#39A900] hover:bg-[#2d8400] h-11">
+            Crear Informe GC
+          </Button>
         </div>
 
-        {/* GF */}
-        <div>
-          <h2 className="mb-4 text-gray-700">Gestión Financiera (GF)</h2>
-          <div className="max-w-xs">
-            <Card
-              className="p-6 hover:shadow-lg transition-all cursor-pointer border-2 hover:border-[#39A900]"
-              onClick={() => setSelectedType('gf')}
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-4">
-                  <DollarSign className="text-[#39A900]" size={28} />
-                </div>
-                <h3 className="mb-2 text-[#39A900] font-semibold">Gestión Financiera</h3>
-                <p className="text-sm text-gray-500 mb-4">
-                  Planillas de pago, comprobantes y documentos financieros
-                </p>
-                <Button className="w-full bg-[#39A900] hover:bg-[#2d8400]">
-                  Crear Informe GF
-                </Button>
-              </div>
-            </Card>
+        {
+    /* GF */
+  }
+        <div className="bg-white border-2 border-gray-200 hover:border-[#39A900] hover:shadow-lg transition-all rounded-2xl p-8 flex flex-col">
+          <div className="flex justify-center mb-5">
+            <div className="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center">
+              <DollarSign className="text-amber-500" size={32} />
+            </div>
           </div>
+          <h2 className="text-center text-[#39A900] font-bold text-lg mb-1">Gestión Financiera (GF)</h2>
+          <p className="text-center text-sm text-gray-500 mb-5">
+            Informe de gestión financiera con planillas de pago y comprobantes
+          </p>
+          <div className="mb-6">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Documentos requeridos</p>
+            <ul className="text-sm text-gray-600 space-y-1">
+              <li className="flex items-start gap-1.5"><span className="text-[#39A900] mt-0.5">•</span>Planilla de seguridad social</li>
+              <li className="flex items-start gap-1.5"><span className="text-[#39A900] mt-0.5">•</span>Planilla de salud y pensión</li>
+              <li className="flex items-start gap-1.5"><span className="text-[#39A900] mt-0.5">•</span>Comprobante de pago</li>
+              <li className="flex items-start gap-1.5"><span className="text-[#39A900] mt-0.5">•</span>Dependientes (si aplica)</li>
+              <li className="flex items-start gap-1.5"><span className="text-[#39A900] mt-0.5">•</span>Planilla si es contratista</li>
+            </ul>
+          </div>
+          <Button onClick={() => setSelectedType("gf")} className="mt-auto w-full bg-[#39A900] hover:bg-[#2d8400] h-11">
+            Crear Informe GF
+          </Button>
         </div>
       </div>
-    </div>
-  );
+
+      {planillas.length > 0 && <div>
+          <h2 className="mb-4 text-gray-700">Planillas GC disponibles</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {planillas.map((p) => <div key={p.id} className="bg-white border-2 border-gray-200 hover:border-[#39A900] hover:shadow-md transition-all rounded-xl p-5 flex items-center gap-4 cursor-pointer" onClick={() => {
+    setSelectedPlanilla(p);
+    setSelectedType("planilla");
+  }}>
+                <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <ClipboardList className="text-[#39A900]" size={24} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-gray-800 truncate">{p.name}</p>
+                  {p.description && <p className="text-xs text-gray-500 truncate mt-0.5">{p.description}</p>}
+                  <p className="text-xs text-gray-400 mt-0.5">Publicada: {p.createdAt}</p>
+                </div>
+                <Button size="sm" className="bg-[#39A900] hover:bg-[#2d8400] flex-shrink-0">Diligenciar</Button>
+              </div>)}
+          </div>
+        </div>}
+    </div>;
 }

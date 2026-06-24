@@ -1,44 +1,40 @@
-import { Card } from '../ui/card';
-import { Button } from '../ui/button';
-import { BarChart3, Download, TrendingUp, TrendingDown, Users, FileText, Calendar, Filter } from 'lucide-react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
-
+import { Card } from "../ui/card";
+import { Button } from "../ui/button";
+import { BarChart3, Download, TrendingUp, TrendingDown, Users, FileText, Filter } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, PieChart, Pie, Cell } from "recharts";
 export default function Reports() {
   const monthlyStats = [
-    { month: 'Ene', gc: 95, gf: 100, total: 97 },
-    { month: 'Feb', gc: 92, gf: 98, total: 95 },
-    { month: 'Mar', gc: 98, gf: 95, total: 96 },
-    { month: 'Abr', gc: 90, gf: 92, total: 91 },
-    { month: 'May', gc: 94, gf: 96, total: 95 },
-    { month: 'Jun', gc: 88, gf: 90, total: 89 },
-    { month: 'Jul', gc: 92, gf: 94, total: 93 },
-    { month: 'Ago', gc: 96, gf: 98, total: 97 },
-    { month: 'Sep', gc: 90, gf: 88, total: 89 },
-    { month: 'Oct', gc: 94, gf: 96, total: 95 },
+    { month: "Ene", gc: 95, gf: 100, total: 97 },
+    { month: "Feb", gc: 92, gf: 98, total: 95 },
+    { month: "Mar", gc: 98, gf: 95, total: 96 },
+    { month: "Abr", gc: 90, gf: 92, total: 91 },
+    { month: "May", gc: 94, gf: 96, total: 95 },
+    { month: "Jun", gc: 88, gf: 90, total: 89 },
+    { month: "Jul", gc: 92, gf: 94, total: 93 },
+    { month: "Ago", gc: 96, gf: 98, total: 97 },
+    { month: "Sep", gc: 90, gf: 88, total: 89 },
+    { month: "Oct", gc: 94, gf: 96, total: 95 }
   ];
-
   const areaStats = [
-    { name: 'ADSO', value: 95, color: '#39A900' },
-    { name: 'Redes', value: 92, color: '#10b981' },
-    { name: 'Barismo', value: 88, color: '#059669' },
-    { name: 'Construcción', value: 90, color: '#84cc16' },
-    { name: 'Cocina', value: 94, color: '#22c55e' },
+    { name: "ADSO", value: 95, color: "#39A900" },
+    { name: "Redes", value: 92, color: "#10b981" },
+    { name: "Barismo", value: 88, color: "#059669" },
+    { name: "Construcción", value: 90, color: "#84cc16" },
+    { name: "Cocina", value: 94, color: "#22c55e" }
   ];
-
-  const COLORS = ['#39A900', '#10b981', '#059669', '#84cc16', '#22c55e'];
-
+  const COLORS = ["#39A900", "#10b981", "#059669", "#84cc16", "#22c55e"];
   const topInstructors = [
-    { name: 'María González', compliance: 100, reports: 20, level: 'Excelente', area: 'ADSO' },
-    { name: 'Ana Martínez', compliance: 100, reports: 20, level: 'Excelente', area: 'Redes' },
-    { name: 'Laura Jiménez', compliance: 98, reports: 20, level: 'Excelente', area: 'Barismo' },
-    { name: 'Miguel Torres', compliance: 96, reports: 20, level: 'Muy Bueno', area: 'Cocina' },
-    { name: 'Carlos Rodríguez', compliance: 94, reports: 20, level: 'Muy Bueno', area: 'Construcción' },
+    { name: "María González", compliance: 100, reports: 20, level: "Excelente", area: "ADSO" },
+    { name: "Ana Martínez", compliance: 100, reports: 20, level: "Excelente", area: "Redes" },
+    { name: "Laura Jiménez", compliance: 98, reports: 20, level: "Excelente", area: "Barismo" },
+    { name: "Miguel Torres", compliance: 96, reports: 20, level: "Muy Bueno", area: "Cocina" },
+    { name: "Carlos Rodríguez", compliance: 94, reports: 20, level: "Muy Bueno", area: "Construcción" }
   ];
-
-  return (
-    <div className="p-8 bg-gradient-to-br from-green-50 to-emerald-50/20 min-h-screen">
-      {/* Header with gradient */}
+  return <div className="p-8 bg-gradient-to-br from-green-50 to-emerald-50/20 min-h-screen">
+      {
+    /* Header with gradient */
+  }
       <div className="mb-8 bg-gradient-to-r from-[#39A900] via-green-600 to-emerald-600 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full -ml-24 -mb-24 blur-2xl" />
@@ -63,7 +59,9 @@ export default function Reports() {
         </div>
       </div>
 
-      {/* Filters */}
+      {
+    /* Filters */
+  }
       <Card className="p-6 mb-6 border-0 shadow-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-48 h-48 bg-green-100/30 rounded-full -mr-24 -mt-24 blur-3xl" />
         <div className="relative z-10">
@@ -134,7 +132,9 @@ export default function Reports() {
         </div>
       </Card>
 
-      {/* Overview Stats */}
+      {
+    /* Overview Stats */
+  }
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         <Card className="p-6 border-0 shadow-xl relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -193,7 +193,9 @@ export default function Reports() {
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6 mb-8">
-        {/* Chart */}
+        {
+    /* Chart */
+  }
         <Card className="lg:col-span-2 p-6 border-0 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/20 rounded-full -mr-48 -mt-48 blur-3xl" />
           <div className="relative z-10">
@@ -206,32 +208,32 @@ export default function Reports() {
               <BarChart data={monthlyStats}>
                 <defs>
                   <linearGradient id="colorGC" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#39A900" stopOpacity={0.9}/>
-                    <stop offset="95%" stopColor="#2d8400" stopOpacity={0.9}/>
+                    <stop offset="5%" stopColor="#39A900" stopOpacity={0.9} />
+                    <stop offset="95%" stopColor="#2d8400" stopOpacity={0.9} />
                   </linearGradient>
                   <linearGradient id="colorGF" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.9}/>
-                    <stop offset="95%" stopColor="#059669" stopOpacity={0.9}/>
+                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.9} />
+                    <stop offset="95%" stopColor="#059669" stopOpacity={0.9} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
-                <XAxis 
-                  dataKey="month" 
-                  stroke="#6b7280"
-                  style={{ fontSize: '12px' }}
-                />
-                <YAxis 
-                  stroke="#6b7280"
-                  style={{ fontSize: '12px' }}
-                />
-                <Tooltip 
-                  contentStyle={{ 
-                    backgroundColor: 'white', 
-                    border: 'none', 
-                    borderRadius: '12px',
-                    boxShadow: '0 10px 40px -10px rgb(0 0 0 / 0.2)'
-                  }}
-                />
+                <XAxis
+    dataKey="month"
+    stroke="#6b7280"
+    style={{ fontSize: "12px" }}
+  />
+                <YAxis
+    stroke="#6b7280"
+    style={{ fontSize: "12px" }}
+  />
+                <Tooltip
+    contentStyle={{
+      backgroundColor: "white",
+      border: "none",
+      borderRadius: "12px",
+      boxShadow: "0 10px 40px -10px rgb(0 0 0 / 0.2)"
+    }}
+  />
                 <Legend />
                 <Bar dataKey="gc" name="GC" fill="url(#colorGC)" radius={[8, 8, 0, 0]} />
                 <Bar dataKey="gf" name="GF" fill="url(#colorGF)" radius={[8, 8, 0, 0]} />
@@ -240,7 +242,9 @@ export default function Reports() {
           </div>
         </Card>
 
-        {/* Area Performance Chart */}
+        {
+    /* Area Performance Chart */
+  }
         <Card className="p-6 border-0 shadow-xl relative overflow-hidden">
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-green-100/20 rounded-full -ml-32 -mb-32 blur-3xl" />
           <div className="relative z-10">
@@ -252,59 +256,51 @@ export default function Reports() {
             <ResponsiveContainer width="100%" height={250}>
               <PieChart>
                 <Pie
-                  data={areaStats}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={60}
-                  outerRadius={90}
-                  paddingAngle={5}
-                  dataKey="value"
-                >
-                  {areaStats.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
+    data={areaStats}
+    cx="50%"
+    cy="50%"
+    innerRadius={60}
+    outerRadius={90}
+    paddingAngle={5}
+    dataKey="value"
+  >
+                  {areaStats.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
                 </Pie>
-                <Tooltip 
-                  contentStyle={{ 
-                    backgroundColor: 'white', 
-                    border: 'none', 
-                    borderRadius: '12px',
-                    boxShadow: '0 10px 40px -10px rgb(0 0 0 / 0.2)'
-                  }}
-                />
+                <Tooltip
+    contentStyle={{
+      backgroundColor: "white",
+      border: "none",
+      borderRadius: "12px",
+      boxShadow: "0 10px 40px -10px rgb(0 0 0 / 0.2)"
+    }}
+  />
               </PieChart>
             </ResponsiveContainer>
 
             <div className="grid grid-cols-2 gap-2 mt-4">
-              {areaStats.map((area, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <div 
-                    className="w-3 h-3 rounded-full" 
-                    style={{ backgroundColor: area.color }}
-                  />
+              {areaStats.map((area, index) => <div key={index} className="flex items-center gap-2">
+                  <div
+    className="w-3 h-3 rounded-full"
+    style={{ backgroundColor: area.color }}
+  />
                   <span className="text-xs text-gray-600">{area.name}: {area.value}%</span>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </Card>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
-        {/* Top Instructors */}
+        {
+    /* Top Instructors */
+  }
         <Card className="p-6 border-0 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-green-100/20 rounded-full -mr-32 -mt-32 blur-3xl" />
           <div className="relative z-10">
             <h2 className="mb-6">Mejores Instructores</h2>
             <div className="space-y-3">
-              {topInstructors.map((instructor, index) => (
-                <div key={index} className="flex items-center gap-3 p-3 bg-gradient-to-r from-gray-50 to-green-50 rounded-xl hover:shadow-md transition-all">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-md ${
-                    index === 0 ? 'bg-gradient-to-br from-yellow-400 to-yellow-600' : 
-                    index === 1 ? 'bg-gradient-to-br from-gray-300 to-gray-500' : 
-                    index === 2 ? 'bg-gradient-to-br from-orange-400 to-orange-600' : 
-                    'bg-gradient-to-br from-green-400 to-green-600'
-                  }`}>
+              {topInstructors.map((instructor, index) => <div key={index} className="flex items-center gap-3 p-3 bg-gradient-to-r from-gray-50 to-green-50 rounded-xl hover:shadow-md transition-all">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-md ${index === 0 ? "bg-gradient-to-br from-yellow-400 to-yellow-600" : index === 1 ? "bg-gradient-to-br from-gray-300 to-gray-500" : index === 2 ? "bg-gradient-to-br from-orange-400 to-orange-600" : "bg-gradient-to-br from-green-400 to-green-600"}`}>
                     <span className="text-white">{index + 1}</span>
                   </div>
                   <div className="flex-1">
@@ -312,12 +308,10 @@ export default function Reports() {
                     <div className="text-xs text-gray-600">{instructor.area} • {instructor.level}</div>
                   </div>
                   <div className="text-sm bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">{instructor.compliance}%</div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 }
